@@ -1,0 +1,23 @@
+{
+    "cultures_number": 2,
+    "cultures": [
+        {
+            "base": [1, 0, 0],
+            "angle": 0.5,
+            "amount": 100,
+            "dim": 2,
+            "start_indx": 0
+        },
+        {
+            "base": [0, 1, 0],
+            "angle": 0.5,
+            "amount": 100,
+            "dim": 2,
+            "start_indx": 0
+        }
+    ],
+    "total_dim": 10,
+    "unique_dim": 5,
+    "universal_dim": 3,
+    "num_steps": 100
+}
