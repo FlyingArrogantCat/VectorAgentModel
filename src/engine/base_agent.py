@@ -48,6 +48,9 @@ class Agent(BaseAgent):
     def get_state(self):
         return self.state
     
+    def set_state(self, state):
+        self.state = state
+    
     def set_culture(self, culture_indx):
         self.culture_indx = culture_indx
 

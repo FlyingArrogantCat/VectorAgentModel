@@ -13,6 +13,6 @@ warnings.filterwarnings('ignore')
 if __name__ == "__main__":
 
     args = parse_args()
-    engine = Engine()
+    engine = Engine(args)
 
     engine.start()

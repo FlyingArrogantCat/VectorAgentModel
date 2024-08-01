@@ -27,25 +27,27 @@ class Engine(object):
         self.agents_set = []
 
         self.args = args
-        self.config = json.load(self.args.config)
+        with open(self.args.config, "r") as file:
+            self.config = json.loads(file.read())
 
         self.demography_engine = DemographyEngine(self.config)
         self.educational_engine = EducationalEngine(self.config)
 
         self.cultures_number = self.config["cultures_number"]
 
-        bases = np.array([])
-        angles = np.array([])
+        bases = np.array([x["base"] for x in self.config["cultures"]])
+        angles = np.array([x["angle"] for x in self.config["cultures"]])
         edu = [None for _ in bases]
 
-        self.cultures_initialization(bases, angles=angles)
+        self.cultures_initialization(bases, angles=angles, edus=edu)
 
-        agents_number = []
+        agents_number = [x["amount"] for x in self.config["cultures"]]
         self.agent_initialization(agents_number)
 
 
-    def cultures_initialization(self, bases, angles, edu=None):
-        self.cultures = [Culture(base, angle=angle, edu=edu) for base, angle in zip(bases, angles, edu)]
+    def cultures_initialization(self, bases, angles, edus=None):
+        for base, angle, edu in zip(bases, angles, edus):
+            self.cultures.append(Culture(base, angle=angle, edu=edu))
 
 
     def agent_initialization(self, agents_number):
@@ -53,7 +55,7 @@ class Engine(object):
         for culture, agent_n in zip(self.cultures, agents_number):
             for _ in range(agent_n):
                 agent = Agent(self.config["total_dim"], self.config["unique_dim"], self.config["universal_dim"])
-                agent.state_update(culture.get_random_vector(0.05))
+                agent.set_state(culture.get_random_vector(0.05))
                 self.agents_set.append(agent)
 
 
