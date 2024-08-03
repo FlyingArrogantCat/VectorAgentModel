@@ -75,12 +75,12 @@ class Engine(object):
         probs = np.array([agent.probabilities for agent in self.agents_set])
 
         agents_num = probs.shape[0]
-        dims = probs.shape[0]
+        dims = probs.shape[1]
 
         deriv = np.zeros_like(probs)
         for agent_indx in range(agents_num):
             for dim in range(dims):
-                deriv[agent_indx, dim] = self.config["lambda"] * (probs[:, dim] - probs[agent_indx, dim]) \
+                deriv[agent_indx, dim] = self.config["lambda"] * (np.sum(probs[:, dim]) - probs[agent_indx, dim]) \
                                          + (1 - self.config["lambda"]) * probs[agent_indx, dim]
         
         probs = probs + speed * deriv

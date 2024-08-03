@@ -6,7 +6,7 @@ class EducationalEngine():
     def __init__(self, args):
         self.config = args
 
-        self.educational_states = [culture["edu"] for culture in self.config["cultures"]]
+        self.educational_states = np.array([culture["edu"] for culture in self.config["cultures"]])
         self.speed = self.config["speed"]
 
     def process(self, agents_set):
