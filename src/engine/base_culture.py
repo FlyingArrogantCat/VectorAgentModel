@@ -4,10 +4,11 @@ from src.engine.base_agent import Agent
 
 
 class Culture:
-    def __init__(self, base, angle, edu = None):
+    def __init__(self, base, angle, num_max_actualized_dims, edu = None):
         self.base = np.array(base)
         self.angle = angle
         self.edu = edu
+        self.num_max_actualized_dims = num_max_actualized_dims
     
     def angle_compute(self, state):
         return np.arccos(state @ self.base.T)
@@ -35,4 +36,4 @@ class Culture:
         # while self.angle_compute(new_vec) < self.angle:
         #     new_vec = np.random.normal(0, 1, self.base.shape[0])
         #     new_vec /= np.linalg.norm(new_vec)
-        return x
+        return x[0, :]

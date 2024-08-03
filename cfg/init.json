@@ -1,25 +1,27 @@
 {
     "cultures_number": 2,
+    "unique_dim": 6,
+    "universal_dim": 4,
+    "num_steps": 100,
+    "lambda": 0.05,
+    "speed": 1e-4,
+    "seed": 0.05,
     "cultures": [
         {
-            "base": [1, 1, 1, 1, 0],
+            "base": [1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
             "angle": 0.5,
             "amount": 100,
-            "edu": 0,
-            "dim": 1,
-            "start_indx": 0
+            "edu": [1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+            "start_indx": 0,
+            "num_max_actualized_dims": 2
         },
         {
-            "base": [1, 1, 1, 0, 1],
+            "base": [1, 1, 1, 1, 0, 0, 1, 1, 0, 0],
             "angle": 0.5,
             "amount": 100,
-            "edu": 0,
-            "dim": 1,
-            "start_indx": 1
+            "edu": [1, 1, 1, 1, 0, 0, 1, 1, 0, 0],
+            "start_indx": 2,
+            "num_max_actualized_dims": 2
         }
-    ],
-    "total_dim": 5,
-    "unique_dim": 3,
-    "universal_dim": 2,
-    "num_steps": 100
+    ]
 }
