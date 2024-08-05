@@ -67,6 +67,9 @@ class Agent(BaseAgent):
         assert new_state.shape == self.state[self.actualized_unique_dims].shape
         self.state[self.actualized_unique_dims] = new_state
 
+    def get_unique_state(self):
+        return self.state[self.dim_unique:]
+
     def set_culture(self, culture_indx):
         self.culture_indx = culture_indx
 

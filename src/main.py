@@ -13,6 +13,8 @@ warnings.filterwarnings('ignore')
 if __name__ == "__main__":
 
     args = parse_args()
-    engine = Engine(args)
+
+    logger = None#Logger(args, "temp")
+    engine = Engine(args, logger)
 
     engine.start()

@@ -8,10 +8,11 @@ from src.engine.demo_engine import DemographyEngine
 
 
 class Engine(object):
-    def __init__(self, args):
+    def __init__(self, args, logger):
         self.cultures = []
         self.agents_set = []
         self.args = args
+        self.logger = logger
         with open(self.args.config, "r") as file:
             self.config = json.loads(file.read())
         self.demography_engine = DemographyEngine(self.config)
@@ -68,7 +69,7 @@ class Engine(object):
 
         self.educational_engine.process(self.agents_set)
 
-        self.demography_engine.process()
+        self.demography_engine.process(self.agents_set, self.cultures)
 
 
     def process_unique_states(self, speed: float):
