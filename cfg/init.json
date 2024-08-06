@@ -6,6 +6,8 @@
     "lambda": 0.05,
     "speed": 1e-4,
     "seed": 0.05,
+    "birth_param": 0.5,
+    "death_param": 0.225,
     "cultures": [
         {
             "base": [1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
