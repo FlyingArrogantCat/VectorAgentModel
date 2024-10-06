@@ -5,16 +5,15 @@ from src.engine.base_agent import Agent
 from src.engine.base_culture import Culture
 from src.engine.edu_engine import EducationalEngine
 from src.engine.demo_engine import DemographyEngine
-
+from src.utils.logger import Logger
 
 class Engine(object):
-    def __init__(self, args, logger):
+    def __init__(self, args, logger: Logger, config):
         self.cultures = []
         self.agents_set = []
         self.args = args
         self.logger = logger
-        with open(self.args.config, "r") as file:
-            self.config = json.loads(file.read())
+        self.config = config
         self.demography_engine = DemographyEngine(self.config)
         self.educational_engine = EducationalEngine(self.config)
         self.cultures_number = self.config["cultures_number"]
@@ -62,6 +61,11 @@ class Engine(object):
     def start(self):
         for indx in range(self.config["num_steps"]):
             self.procees_one_step(self.config["speed"])
+
+            if indx % self.config["dump_data_period"] == 0:
+                self.logger.save_data(self.agents_set, f"agents_set_ep{indx}")
+                self.logger.save_data(self.cultures, f"cultures_set_ep{indx}")
+                self.logger.draw_pics(agents_set=self.agents_set, cultures_set=self.cultures, epoch=indx)
 
     def procees_one_step(self, speed: float):
         self.process_universal_states(speed)

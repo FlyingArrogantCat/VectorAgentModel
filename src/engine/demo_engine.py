@@ -47,14 +47,17 @@ class DemographyEngine():
             new_agent.init_probs()
 
             rand_value = np.random.uniform(0, 1, 1)
-            if rand_value < self.config["birth_param"]:
+            rand_value1 = np.random.randint(0, 2, 1)[0]
+            birdth_params  = [self.config["cultures"][agent_set[pair[0]].culture_indx]["birth_param"], 
+                              self.config["cultures"][agent_set[pair[1]].culture_indx]["birth_param"]]
+            if rand_value < birdth_params[rand_value1]:
                 agent_set.append(new_agent)
 
     def process_death(self, agent_set, culture_set):
         indx_to_remove = []
         for indx, agent in enumerate(agent_set):
             rand_value = np.random.uniform(0, 1, 1)
-            if rand_value < self.config["death_param"]:
+            if rand_value < self.config["cultures"][agent.culture_indx]["death_param"]:
                 indx_to_remove.append(indx)
 
         for indx in sorted(indx_to_remove, reverse=True):

@@ -1,4 +1,6 @@
 {
+    "experiment_path": "C:/Users/DELL/Desktop/dissertation/experiments/",
+    "experiment_name": "temp",
     "cultures_number": 2,
     "unique_dim": 6,
     "universal_dim": 4,
@@ -6,24 +8,27 @@
     "lambda": 0.05,
     "speed": 1e-4,
     "seed": 0.05,
-    "birth_param": 0.5,
-    "death_param": 0.225,
+    "dump_data_period": 50,
     "cultures": [
         {
             "base": [1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
             "angle": 0.5,
-            "amount": 100,
+            "amount": 1000,
             "edu": [1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
             "start_indx": 0,
-            "num_max_actualized_dims": 2
+            "num_max_actualized_dims": 2,
+            "birth_param": 0.5,
+            "death_param": 0.225
         },
         {
             "base": [1, 1, 1, 1, 0, 0, 1, 1, 0, 0],
             "angle": 0.5,
-            "amount": 100,
+            "amount": 1000,
             "edu": [1, 1, 1, 1, 0, 0, 1, 1, 0, 0],
             "start_indx": 2,
-            "num_max_actualized_dims": 2
+            "num_max_actualized_dims": 2,
+            "birth_param": 0.5,
+            "death_param": 0.225
         }
     ]
 }
