@@ -1,6 +1,6 @@
 import numpy as np
 import json 
-
+from tqdm import tqdm
 from src.engine.base_agent import Agent
 from src.engine.base_culture import Culture
 from src.engine.edu_engine import EducationalEngine
@@ -9,6 +9,7 @@ from src.utils.logger import Logger
 
 class Engine(object):
     def __init__(self, args, logger: Logger, config):
+        print("Initialization...")
         self.cultures = []
         self.agents_set = []
         self.args = args
@@ -27,6 +28,7 @@ class Engine(object):
                                      edus=edu)
         agents_number = [x["amount"] for x in self.config["cultures"]]
         self.agent_initialization(agents_number)
+        print("Initialization... OK")
 
     def cultures_initialization(self, bases, angles, num_max_actualized_dims_s, edus=None):
         for base, \
@@ -59,7 +61,9 @@ class Engine(object):
                 self.agents_set.append(agent)
 
     def start(self):
-        for indx in range(self.config["num_steps"]):
+        print("Strart...")
+
+        for indx in tqdm(range(self.config["num_steps"])):
             self.procees_one_step(self.config["speed"])
 
             if indx % self.config["dump_data_period"] == 0:

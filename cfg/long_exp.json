@@ -7,7 +7,6 @@
     "num_steps": 1000,
     "lambda": 0.05,
     "speed": 1e-5,
-    "edu_speed": 1e-5,
     "seed": 0.05,
     "dump_data_period": 20,
     "birth_param1": 50,

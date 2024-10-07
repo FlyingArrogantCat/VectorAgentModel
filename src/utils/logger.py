@@ -46,7 +46,7 @@ class Logger:
         raise ValueError
 
     def save_data(self, data, data_name=""):
-        with open(str(self.path/(data_name + ".data")), "ab" ) as file:
+        with open(str(self.path/(data_name + ".data")), "wb" ) as file:
             file.write(pickle.dumps(data))
 
     def draw_pics(self, agents_set, cultures_set, epoch):
@@ -78,3 +78,4 @@ class Logger:
         plt.savefig(str(self.path / f"numbers_{epoch}.png"))
         plt.close()
 
+        self.save_data(history, "history")
